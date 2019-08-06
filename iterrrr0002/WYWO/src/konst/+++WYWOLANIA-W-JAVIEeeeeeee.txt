@@ -1,0 +1,210 @@
+
+public class Test {
+    public static void main(String[] args) {
+        A obiekt = new B();
+        obiekt.x();
+        obiekt.y(); //b³¹d, interfejs A nie posiada metody y()
+        ((B)obiekt).y(); //ok, dziêki rzutowaniu uzyskujemy dostêp do metody y()
+    }
+}
+
+===========================================
+public class TestClass {
+  public static void main(String[] args) {
+    String x = "Ola";
+ 
+    System.out.println("x: " + x);
+ 
+    someOp(x);
+  
+    System.out.println("x: " + x);
+  }
+  
+  public static void someOp(String y) {
+    System.out.println("y: " + y);
+  
+    y = "Ela";
+  
+    System.out.println("y: " + y);
+  }
+}
+
+===================================================
+
+public class MyInnerClass {
+
+public static void main(String args[]) throws InterruptedException {
+    // direct access to inner class method
+    new MyInnerClass.StaticInnerClass().staticInnerClassMethod();
+
+    // static inner class reference object
+    StaticInnerClass staticInnerclass = new StaticInnerClass();
+    staticInnerclass.staticInnerClassMethod();
+
+    // access local inner class
+    LocalInnerClass localInnerClass = new MyInnerClass().new LocalInnerClass();
+    localInnerClass.localInnerClassMethod();
+
+    /*
+     * Pay attention to the opening curly braces and the fact that there's a
+     * semicolon at the very end, once the anonymous class is created:
+     */
+    /*
+     AnonymousClass anonymousClass = new AnonymousClass() {
+         // your code goes here...
+
+     };*/
+ }
+
+// static inner class
+static class StaticInnerClass {
+    public void staticInnerClassMethod() {
+        System.out.println("Hay... from Static Inner class!");
+    }
+}
+
+// local inner class
+class LocalInnerClass {
+    public void localInnerClassMethod() {
+        System.out.println("Hay... from local Inner class!");
+    }
+ }
+
+}
+
+=========================================================================
+public class klaz003{
+	public static void main (String[] arg)
+	{
+//	    Y y = new Y();
+//	    int yFoo = y.foo();
+//	    int yNumber = y.getNumber();
+		//klaz003 ao= new klaz003();
+		X ao= new X();
+		//    methodA();
+		X.someMethod ooo = ao.new someMethod();
+		//Outer.Inner inner = outer.new Inner();
+		ooo.printText();
+	}
+	public class Y
+{
+    public int foo() { return 42; }
+    private int number;
+    public int getNumber() { return number; }
+}
+public static class X{         //STATIC powoduje, ¿e to dzia³a z tym dziwnym ooo.pr....
+    public class someMethod
+    {
+    	public void printText() {
+             System.out.println("aaana");
+         }
+    }
+
+
+}}
+
+
+==================================================================
+public class klaz002 {
+
+//class C {
+
+	public static void Dyy(int yy)
+	{
+		
+		System.out.println(yy);
+	}
+//}
+	public static void main (String[] arg)
+	{
+		Dyy(7);
+		
+	}
+
+====================================================================
+import aaaaq.qqqq;
+
+public class klaz001 {
+
+
+///http://next.gazeta.pl/next/7,151243,19942670,tu-znajdziesz-materialy-pedofilskie-przepis-na-bombe-i-kupisz.html#MTstream
+//http://edu.pjwstk.edu.pl/wyklady/ppj/scb/KlaPrg/KlaPrg.html
+class A{
+    public void methodA(){
+    	System.out.println("aaaa");
+    }
+}
+ class B{
+    public  void methodVB(){
+    	System.out.println("bbbb");
+    }
+}
+ void methodB(){
+    //A a = new A();
+    //a.methodA(); // method invocation between classes
+	System.out.println("cccc");
+ }
+//http://stackoverflow.com/questions/11522026/public-static-void-main-access-non-static-variable
+//http://stackoverflow.com/questions/3793479/object-oriented-class-communication
+public static void main(String args[]){
+	//MojaMetoda test1 = new MojaMetoda();
+	//methodB te= new methodB();
+	//(new methodB()).test();
+	//A a = new A();
+	
+	klaz001 aoo= new klaz001();
+	//    methodA();
+	aoo.methodB();
+
+}
+}
+==================================================
+public interface A {
+    public void x();
+}
+
+
+public class B implements A{
+    @Override
+    public void x() {
+        //do something
+    }
+ 
+    public void y() {
+        //do something
+    }
+}
+
+
+public class Test {
+    public static void main(String[] args) {
+        A obiekt = new B();
+        obiekt.x();
+        obiekt.y(); //b³¹d, interfejs A nie posiada metody y()
+        ((B)obiekt).y(); //ok, dziêki rzutowaniu uzyskujemy dostêp do metody y()
+    }
+}
+
+===================================================
+public interface X {
+    public void doSomething();
+}
+
+public class X1 implements X {
+    public void doSomething(){
+        System.out.println("X1");
+    }
+}
+
+public class Suma {
+    X[] tab = new X[100];
+    tab[0] = new X1();
+    tab[1] = new X2();
+    ...
+    tab[99] = new X99();
+ 
+    void pewnaMetoda() {
+        for(X x: tab)
+            x.doSomething();
+    }
+}

@@ -1,0 +1,18 @@
+package mapaEntry;
+import java.util.Iterator;
+import java.util.Map;
+
+public class mapaEntry002 {
+  public static void main(String args[]) {
+    System.out.println("PATH = " + System.getenv("PATH"));
+
+    Map<String,String> env = System.getenv();
+    
+    for (Iterator<Map.Entry<String,String>> it = env.entrySet().iterator();
+    		
+    		it.hasNext();) {
+      Map.Entry<String,String> entry = it.next();
+      System.out.println(entry.getKey() + " = " + entry.getValue());
+    }
+  }
+}
